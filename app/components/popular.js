@@ -9,8 +9,9 @@ import {
 } from "react-icons/fa";
 import Card from "./Card";
 import Loading from "./Loading";
+import Tooltip from "./Tooltip";
 
-function LangaugesNav({ selected, onUpdateLanguage }) {
+function LanguagesNav({ selected, onUpdateLanguage }) {
   const languages = [
     "All",
     "JavaScript",
@@ -44,7 +45,7 @@ function LangaugesNav({ selected, onUpdateLanguage }) {
   );
 }
 
-LangaugesNav.propTypes = {
+LanguagesNav.propTypes = {
   selected: PropTypes.string.isRequired,
   onUpdateLanguage: PropTypes.func.isRequired
 };
@@ -73,8 +74,10 @@ function ReposGrid({ repos }) {
             >
               <ul className="card-list">
                 <li>
-                  <FaUser color="rgb(255, 191, 116)" size={22} />
-                  <a href={`https://github.com/${login}`}>{login}</a>
+                  <Tooltip text="Github username">
+                    <FaUser color="rgb(255, 191, 116)" size={22} />
+                    <a href={`https://github.com/${login}`}>{login}</a>
+                  </Tooltip>
                 </li>
                 <li>
                   <FaStar color="rgb(255, 215, 0)" size={22} />
@@ -152,7 +155,7 @@ export default class Popular extends React.Component {
 
     return (
       <React.Fragment>
-        <LangaugesNav
+        <LanguagesNav
           selected={selectedLanguage}
           onUpdateLanguage={this.updateLanguage}
         />
